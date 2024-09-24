@@ -1,9 +1,9 @@
 {
     "development" : {
         "username" : "root",
-        "password" : "password",
-        "database" : "database",
-        "host" : "127.0.0.1",
+        "password" : "123456",
+        "database" : "senatiConnection",
+        "host" : "192.168.78.2",
         "dialect" : "mysql"
     },
     "test" : {

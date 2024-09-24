@@ -8,14 +8,12 @@
 npm install
 ```
 
-### 2. Crear el directorio y archivo de configuracion
+### 2. Crear el archivo de configuracion para la base de datos
 
 ```bash
-mkdir config
+npx sequelize-cli init:config
 ```
-```bash
-nano config.json
-```
+
 ```bash
 {
     "development" : {
@@ -43,10 +41,6 @@ nano config.json
 ```
 
 ### 3. Correr Migraciones y Seeders
-
-```bash
-npx sequelize-cli init
-```
 
 ```bash
 npx sequelize-cli db:migrate

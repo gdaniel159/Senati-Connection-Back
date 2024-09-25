@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const authRouter = require('./routes/authRouter');
 const userRouter = require('./routes/userRoute');
+const rolRouter = require('./routes/rolRouter')
 const cors = require('cors');
 // Creamos la instancia de la aplicacion
 const app = express();
@@ -13,7 +14,9 @@ app.use(bodyParser.json());
 // Enrutado para el login
 app.use('/api/auth', authRouter);
 // Enrutado para los usuarios
-app.use('/api/users', userRouter);
+app.use('/api/user', userRouter);
+// Enrutado para los roles
+app.use('/api/rol', rolRouter);
 // Ruta de prueba
 app.get('/', (req, res) => {
     res.send('¡Prueba del servidor activo!')

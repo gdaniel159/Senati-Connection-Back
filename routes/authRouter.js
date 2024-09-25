@@ -9,7 +9,7 @@ router.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
     // Buscar el usuario por correo electrónico en la base de datos
-    const usuario = await Usuario.findOne({ where: { email } });
+    const usuario = await Usuario.scope('withPassword').findOne({ where: { email } });
 
     // Verificar si el usuario existe
     if (!usuario) {

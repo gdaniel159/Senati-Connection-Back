@@ -15,7 +15,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'usuarios', // Nombre de la tabla `usuarios` en la base de datos
+          model: 'Usuarios', // Nombre de la tabla `usuarios` en la base de datos
           key: 'id',
         },
         onDelete: 'CASCADE', // Elimina las tareas si el usuario es eliminado

@@ -17,6 +17,7 @@ app.get('/', (req, res) => {
 
 app.use('/api', endpoint)
 
+
 // Configuramos el puerto de ejecucion
 const PORT = process.env.PORT || 3000;
 // Iniciamos el servidor

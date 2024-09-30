@@ -22,8 +22,8 @@ app.get('/', (req, res) => {
     res.send('¡Prueba del servidor activo!')
 });
 // Configuramos el puerto de ejecucion
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 // Iniciamos el servidor
-app.listen(PORT, () => {
-    console.log(`Servidor en funcionamiento en la ruta http://127.0.0.1:${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Servidor en funcionamiento en la ruta http://0.0.0.0:${PORT}`);
 })

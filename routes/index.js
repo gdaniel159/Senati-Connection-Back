@@ -11,7 +11,7 @@ const router = express.Router()
 // sin token
 router.use('/auth', authRouter);
 // con token
-router.use(authenticateToken);
+// router.use(authenticateToken);
 
 router.use('/rol', rolRouter)
 router.use('/user', userRouter);

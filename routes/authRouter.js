@@ -24,6 +24,11 @@ router.post('/login', async (req, res) => {
             return res.status(401).json({ mensaje: 'Correo electrónico o contraseña incorrectos' });
         }
 
+	// console.log("Usuario: ", usuario);
+	// console.log("Contraseña Valida: ", contraseñaValida);
+
+	// console.log('JWT_SECRET:', process.env.JWT_SECRET);
+
         // Si el correo y la contraseña son válidos, generar el token JWT
         const token = jwt.sign({ usuarioId: usuario.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 

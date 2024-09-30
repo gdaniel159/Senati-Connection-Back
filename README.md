@@ -40,6 +40,10 @@ npx sequelize-cli init:config
 }
 ```
 
+### 3. Añade el archivo .env
+
+Quitar el example del archivo .env
+
 ### 3. Correr Migraciones y Seeders
 
 ```bash

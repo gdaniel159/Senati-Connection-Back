@@ -2,12 +2,13 @@
 const express = require('express');
 const endpoint = require('./routes/index');
 const cors = require('cors');
-const morgan = require('morgan')
+
+require('dotenv').config();
 // Creamos la instancia de la aplicacion
 const app = express();
 // Hanilitar cors
 app.use(cors());
-app.use(morgan())
+
 // Configurar express para analizas las solicitudes JSON
 app.use(express.json());
 

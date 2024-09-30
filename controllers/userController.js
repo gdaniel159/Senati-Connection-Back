@@ -7,7 +7,16 @@ const getUsers = async (req, res) => {
 
     try {
 
-        const usuarios = await Usuario.findAll();
+        const usuarios = await Usuario.findAll(
+            {
+                include: {
+                  model: Rol, // Incluye el modelo Rol
+                  as: 'rol', // Asegúrate de que coincida con el alias definido en la asociación
+                  attributes: ['description'] // Solo queremos la descripción del rol
+                }
+              }
+
+        );
 
         res.status(200).json(usuarios);
 

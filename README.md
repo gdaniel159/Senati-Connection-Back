@@ -12,7 +12,7 @@ npm install
 
 ```bash
 npx sequelize-cli init:config
-```
+```        
 
 ```bash
 {

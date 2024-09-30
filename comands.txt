@@ -1,0 +1,7 @@
+/*
+ drop database senati_connect
+
+
+create database senati_connect
+
+*/

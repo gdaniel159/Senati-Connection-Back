@@ -1,5 +1,4 @@
 const express = require('express');
-const authenticateToken = require('../middlewares/authMiddleware');
 const {
     getRoles,
     getRolById,
@@ -10,11 +9,16 @@ const {
 
 const router = express.Router();
 
-// Obtener todos los usuarios
-router.get('/', authenticateToken, getRoles);
-router.get('/:id', authenticateToken, getRolById);
-router.post('/', authenticateToken, storeRol);
-router.put('/:id', authenticateToken, updateRol);
-router.delete('/:id', authenticateToken, deleteRol);
+router
+    .route('/')
+    .get(getRoles)          
+    .post(storeRol);        
+
+router
+    .route('/:id')
+    .get(getRolById)        
+    .put(updateRol)         
+    .delete(deleteRol);     
+
 
 module.exports = router;

@@ -1,5 +1,4 @@
 const express = require('express');
-const authenticateToken = require('../middlewares/authMiddleware');
 const {
     getUsers,
     getUserById,
@@ -11,10 +10,17 @@ const {
 const router = express.Router();
 
 // Obtener todos los usuarios
-router.get('/', authenticateToken, getUsers);
-router.get('/:id', authenticateToken, getUserById);
-router.post('/', authenticateToken, storeUser);
-router.put('/:id', authenticateToken, updateUser);
-router.delete('/:id', authenticateToken, deleteUser);
+
+router
+    .route('/')
+    .get(getUsers)
+    .post(storeUser);
+
+router
+    .route('/:id')
+    .get(getUserById)
+    .put(updateUser)
+    .delete(deleteUser);
+
 
 module.exports = router;

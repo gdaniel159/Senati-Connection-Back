@@ -17,5 +17,4 @@ router.use('/rol', rolRouter)
 router.use('/user', userRouter);
 router.use('/chat', chatRouter);
 
-
 module.exports = router;

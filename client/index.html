@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat con Socket.IO</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#chat-window {
+    height: 300px;
+    overflow-y: scroll;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+#messages {
+    list-style: none;
+    padding: 0;
+}
+
+#message-input {
+    width: 80%;
+    padding: 10px;
+}
+
+#send-button {
+    padding: 10px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Chat en Tiempo Real</h1>
+        <div id="chat-window">
+            <ul id="messages"></ul>
+        </div>
+        <input id="message-input" placeholder="Escribe un mensaje..." autocomplete="off"/>
+        <button id="send-button">Enviar</button>
+    </div>
+
+    <script>
+        // Conectar al servidor Socket.IO
+        let socket = io('http://localhost:3000'); // Cambia el puerto según sea necesario
+
+        // Cambia el ID del curso y el usuario según sea necesario
+        let idCurso = 'curso123';
+        let idUser = 'usuario1' + Math.random();
+
+
+        // Unirse al curso
+        socket.emit('join', { idUser, idCurso });
+
+        // Recibir mensajes del servidor
+        socket.on('chat', (data) => {
+            const messages = document.getElementById('messages');
+            const messageItem = document.createElement('li');
+            messageItem.textContent = `${data.idCurso}: ${data.mensaje}`;
+            messages.appendChild(messageItem);
+        });
+
+        // Enviar un mensaje
+        document.getElementById('send-button').onclick = () => {
+            const input = document.getElementById('message-input');
+            const mensaje = input.value;
+            if (mensaje) {
+                // Enviar mensaje a través de la API
+                fetch('http://localhost:3000/api/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ idCurso, mensaje })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    input.value = ''; // Limpiar el campo de entrada
+                })
+                .catch(error => console.error('Error:', error));
+            }
+        };
+    </script>
+</body>
+</html>

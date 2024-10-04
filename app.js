@@ -20,7 +20,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/', (req, res) => {
-    res.send('<img src="https://i.makeagif.com/media/7-02-2015/MpUSdO.gif" alt="Estatus Server" title="Llego tu pedido chamo" />');
+    res.send('<img src="https://i.makeagif.com/media/7-02-2015/MpUSdO.gif" alt="Estatus Server" title="Chamo llego tu pedido" />');
 });
 
 io.on('connection', (socket) => {
@@ -96,6 +96,6 @@ require('dotenv').config();
 const PORT = process.env.PORT || 8080;
 
 // Iniciamos el servidor
-server.listen(PORT, '0.0.0.0' () => {
+server.listen(PORT, '0.0.0.0', () => {
     console.log(`Servidor en funcionamiento en la ruta http://0.0.0.0:${PORT}`);
 });

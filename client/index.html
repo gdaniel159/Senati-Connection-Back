@@ -57,7 +57,7 @@
 
     <script>
         // Conectar al servidor Socket.IO
-        let socket = io('http://localhost:3000'); // Cambia el puerto según sea necesario
+        let socket = io('https://senati-back-connection.centralus.cloudapp.azure.com/'); // Cambia el puerto según sea necesario
 
         // Cambia el ID del curso y el usuario según sea necesario
         let idCurso = 'curso123';
@@ -81,7 +81,7 @@
             const mensaje = input.value;
             if (mensaje) {
                 // Enviar mensaje a través de la API
-                fetch('http://localhost:3000/api/chat', {
+                fetch('https://senati-back-connection.centralus.cloudapp.azure.com/api/chat', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
